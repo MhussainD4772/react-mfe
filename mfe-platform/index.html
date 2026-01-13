@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Alpha MFE – Host Harness</title>
+  </head>
+
+  <body style="font-family: system-ui">
+    <h2>Host Harness</h2>
+
+    <!-- MFE will be injected here -->
+    <div id="container"></div>
+
+    <!-- Load the MFE bundle -->
+    <script type="module" src="/src/main.tsx"></script>
+
+    <script>
+      document.body.addEventListener("mfe:action", (e) => {
+        const { type, payload } = e.detail;
+
+        if (type === "apiError") {
+          console.log("HOST HANDLED ERROR:", payload);
+        }
+
+        if (type === "activityLoaded") {
+          console.log("HOST RECEIVED ACTIVITY LOADED:", payload);
+        }
+      });
+
+      document.body.addEventListener("mfe:ready", () => {
+        console.log("HOST: mfe ready");
+      });
+
+      const container = document.getElementById("container");
+
+      const mfe = document.createElement("user-activity-mfe");
+
+      // Attribute input
+      mfe.setAttribute("tenant-id", "tenant-1");
+
+      // Property inputs
+      mfe.authContext = {
+        userId: "host-user-1",
+        roles: ["admin"],
+      };
+
+      mfe.bffBaseUrl = "http://localhost:8001";
+
+      container.appendChild(mfe);
+
+      setTimeout(() => {
+        console.log("HOST: updating tenant");
+        mfe.setAttribute("tenant-id", "tenant-2");
+      }, 3000);
+
+      setTimeout(() => {
+        console.log("HOST: updating authContext");
+        mfe.authContext = {
+          userId: "host-user-2",
+          roles: ["viewer"],
+        };
+      }, 6000);
+    </script>
+  </body>
+</html>

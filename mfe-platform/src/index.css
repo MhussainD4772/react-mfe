@@ -1,0 +1,86 @@
+:root {
+  --bg: #ffffff;
+  --border: #e5e7eb;
+  --muted: #6b7280;
+  --text: #111827;
+  --primary: #2563eb;
+  --danger: #dc2626;
+}
+
+.mfe-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  width: 320px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+.mfe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mfe-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.mfe-meta {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.mfe-section {
+  margin-top: 12px;
+}
+
+.mfe-row {
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.mfe-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.mfe-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.mfe-btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.mfe-error {
+  margin-top: 8px;
+  color: var(--danger);
+  font-size: 12px;
+}
+
+.mfe-empty {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.mfe-list {
+  margin-top: 8px;
+  padding-left: 16px;
+}
+
+.mfe-list li {
+  font-size: 13px;
+  margin-top: 4;
+}
